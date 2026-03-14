@@ -1,0 +1,556 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a2e;
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+header {
+    background: #16213e;
+    padding: 0 20px;
+    border-bottom: 3px solid #0f9b58;
+}
+
+.header-logo {
+    text-align: center;
+    padding: 12px 0 8px;
+}
+
+.header-logo img {
+    max-width: 320px;
+    width: 80%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.tab-nav {
+    display: flex;
+    gap: 4px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px 8px;
+    background: #1a1a2e;
+    color: #aaa;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+}
+
+.tab-btn:hover {
+    background: #2a2a4e;
+    color: #ddd;
+}
+
+.tab-btn.active {
+    background: #0f9b58;
+    color: #fff;
+}
+
+main {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px 16px;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+h2 {
+    color: #0f9b58;
+    margin-bottom: 16px;
+    font-size: 1.3rem;
+}
+
+h3 {
+    color: #4caf80;
+    margin: 20px 0 10px;
+    font-size: 1.1rem;
+}
+
+/* 팀 등록 - 팀별 고유 색상 */
+.team-block {
+    background: #16213e;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 12px;
+}
+
+.team-red { border-left: 5px solid #e53935; }
+.team-blue { border-left: 5px solid #1e88e5; }
+.team-yellow { border-left: 5px solid #fdd835; }
+.team-green { border-left: 5px solid #43a047; }
+
+.team-block label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #4caf80;
+}
+
+.team-block .team-name {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+}
+
+.players {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+/* 자동완성 래퍼 */
+.player-input-wrap {
+    position: relative;
+}
+
+.player-input-wrap input {
+    width: 100%;
+    padding: 7px 10px;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.autocomplete-hint {
+    position: absolute;
+    left: 11px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #e0e0e0;
+    opacity: 0.3;
+    font-size: 0.9rem;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+/* 승점 입력 */
+.bonus-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px solid #2a2a4e;
+}
+
+.bonus-row label {
+    margin-bottom: 0 !important;
+    min-width: 70px;
+    font-size: 0.9rem;
+}
+
+.bonus-row input {
+    width: 100px;
+    padding: 6px 10px;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    text-align: right;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #0f9b58;
+}
+
+/* 버튼 */
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #0f9b58;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: #0d8a4e;
+}
+
+.btn-danger {
+    padding: 4px 10px;
+    background: #d32f2f;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.btn-danger:hover {
+    background: #b71c1c;
+}
+
+/* 팀 등록 하단 버튼 행 */
+.teams-btn-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.teams-btn-row .btn-primary {
+    flex: 1;
+    margin-top: 0;
+}
+
+.btn-danger-lg {
+    padding: 12px 20px;
+    background: #d32f2f;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-danger-lg:hover {
+    background: #b71c1c;
+}
+
+/* 모달 버튼 행 */
+.modal-btn-row {
+    display: flex;
+    gap: 10px;
+}
+
+.modal-btn-row .btn-danger-lg,
+.modal-btn-row .btn-primary {
+    flex: 1;
+    margin-top: 0;
+}
+
+.btn-edit {
+    padding: 4px 10px;
+    background: #1e88e5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin-right: 4px;
+}
+
+.btn-edit:hover {
+    background: #1565c0;
+}
+
+.status-msg {
+    text-align: center;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: #4caf80;
+    min-height: 1.2em;
+}
+
+/* 점수 등록 */
+.score-form {
+    background: #16213e;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.score-entry {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.wind-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: #2a2a4e;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ffd700;
+    flex-shrink: 0;
+}
+
+.score-player-wrap {
+    flex: 1;
+    min-width: 0;
+}
+
+.score-player-wrap input {
+    width: 100%;
+    padding: 8px 10px;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.score-input {
+    width: 100px;
+    padding: 8px 10px;
+    background: #1a1a2e;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.score-sum-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    padding: 10px;
+    background: #1a1a2e;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.sum-zero {
+    color: #43a047;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.sum-nonzero {
+    color: #e53935;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* 순위표 */
+.ranking-section {
+    margin-bottom: 24px;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #16213e;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+thead th {
+    background: #0f9b58;
+    color: #fff;
+    padding: 10px 6px;
+    text-align: center;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+tbody td {
+    padding: 10px 6px;
+    text-align: center;
+    border-bottom: 1px solid #2a2a4e;
+    font-size: 0.85rem;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 순위 색상 */
+tbody tr:nth-child(1) td:first-child { color: #ffd700; font-weight: bold; }
+tbody tr:nth-child(2) td:first-child { color: #c0c0c0; font-weight: bold; }
+tbody tr:nth-child(3) td:first-child { color: #cd7f32; font-weight: bold; }
+
+/* 팀 색상 행 */
+.row-red { border-left: 4px solid #e53935; }
+.row-blue { border-left: 4px solid #1e88e5; }
+.row-yellow { border-left: 4px solid #fdd835; }
+.row-green { border-left: 4px solid #43a047; }
+
+/* 팀 색상 배경 (이름 셀, 카드) */
+.bg-red { background: rgba(229, 57, 53, 0.3); }
+.bg-blue { background: rgba(30, 136, 229, 0.3); }
+.bg-yellow { background: rgba(253, 216, 53, 0.25); }
+.bg-green { background: rgba(67, 160, 71, 0.3); }
+
+.score-positive { color: #4caf80; }
+.score-negative { color: #ef5350; }
+
+/* 대전 기록 */
+.match-record {
+    background: #16213e;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.match-record-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.match-record-header span {
+    font-weight: 600;
+    color: #4caf80;
+    font-size: 0.9rem;
+}
+
+.match-record-header .btn-group {
+    display: flex;
+    gap: 4px;
+}
+
+.match-record-results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.match-player-card {
+    background: #1a1a2e;
+    border-radius: 4px;
+    padding: 8px;
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+.match-player-card .player-name-text {
+    font-weight: 600;
+    color: #e0e0e0;
+    margin-bottom: 4px;
+}
+
+.match-player-card .player-score-text {
+    font-size: 0.9rem;
+}
+
+.match-player-card .player-points-text {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 2px;
+}
+
+.no-records {
+    color: #888;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 모달 */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal {
+    background: #16213e;
+    border-radius: 10px;
+    padding: 24px;
+    max-width: 340px;
+    width: 90%;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+.modal p {
+    margin-bottom: 16px;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #ef5350;
+    font-weight: 600;
+}
+
+.modal .btn-primary {
+    margin-top: 0;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+    .header-logo img {
+        max-width: 240px;
+    }
+
+    .tab-btn {
+        font-size: 0.78rem;
+        padding: 8px 4px;
+    }
+
+    .players {
+        grid-template-columns: 1fr;
+    }
+
+    .score-entry {
+        flex-wrap: wrap;
+    }
+
+    .score-player-wrap {
+        flex: 1 1 100%;
+        order: 2;
+    }
+
+    .wind-label {
+        order: 1;
+    }
+
+    .score-input {
+        order: 3;
+        width: 100%;
+    }
+
+    .match-record-results {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    thead th, tbody td {
+        padding: 8px 3px;
+        font-size: 0.75rem;
+    }
+}

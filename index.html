@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>작낳대 - 마작 대회 점수 계산</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <img src="image.png" alt="작낳대 로고">
+        </div>
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="teams">팀 등록</button>
+            <button class="tab-btn" data-tab="scores">점수 등록</button>
+            <button class="tab-btn" data-tab="rankings">순위 확인</button>
+            <button class="tab-btn" data-tab="matches">대전 기록</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 팀 등록 탭 -->
+        <section id="teams" class="tab-content active">
+            <h2>팀 / 선수 등록</h2>
+            <div id="teams-form">
+                <div class="team-block team-red" data-team="team1">
+                    <label>팀 1 이름</label>
+                    <input type="text" class="team-name" placeholder="팀 이름 입력">
+                    <div class="players">
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 1" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 2" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 3" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 4" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                    </div>
+                    <div class="bonus-row">
+                        <label>추가 승점</label>
+                        <input type="number" class="bonus-points" value="0">
+                    </div>
+                </div>
+                <div class="team-block team-blue" data-team="team2">
+                    <label>팀 2 이름</label>
+                    <input type="text" class="team-name" placeholder="팀 이름 입력">
+                    <div class="players">
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 1" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 2" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 3" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 4" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                    </div>
+                    <div class="bonus-row">
+                        <label>추가 승점</label>
+                        <input type="number" class="bonus-points" value="0">
+                    </div>
+                </div>
+                <div class="team-block team-yellow" data-team="team3">
+                    <label>팀 3 이름</label>
+                    <input type="text" class="team-name" placeholder="팀 이름 입력">
+                    <div class="players">
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 1" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 2" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 3" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 4" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                    </div>
+                    <div class="bonus-row">
+                        <label>추가 승점</label>
+                        <input type="number" class="bonus-points" value="0">
+                    </div>
+                </div>
+                <div class="team-block team-green" data-team="team4">
+                    <label>팀 4 이름</label>
+                    <input type="text" class="team-name" placeholder="팀 이름 입력">
+                    <div class="players">
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 1" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 2" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 3" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                        <div class="player-input-wrap"><input type="text" class="player-name" placeholder="선수 4" autocomplete="off"><span class="autocomplete-hint"></span></div>
+                    </div>
+                    <div class="bonus-row">
+                        <label>추가 승점</label>
+                        <input type="number" class="bonus-points" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="teams-btn-row">
+                <button id="save-teams" class="btn-primary">저장</button>
+                <button id="reset-all" class="btn-danger-lg">초기화</button>
+            </div>
+            <p id="teams-status" class="status-msg"></p>
+        </section>
+
+        <!-- 점수 등록 탭 -->
+        <section id="scores" class="tab-content">
+            <h2>점수 등록</h2>
+            <div class="score-form">
+                <div class="score-entry" data-wind="東">
+                    <span class="wind-label">東</span>
+                    <div class="player-input-wrap score-player-wrap">
+                        <input type="text" class="score-player-name" placeholder="참가자 이름" autocomplete="off">
+                        <span class="autocomplete-hint"></span>
+                    </div>
+                    <input type="number" class="score-input" placeholder="점수">
+                </div>
+                <div class="score-entry" data-wind="南">
+                    <span class="wind-label">南</span>
+                    <div class="player-input-wrap score-player-wrap">
+                        <input type="text" class="score-player-name" placeholder="참가자 이름" autocomplete="off">
+                        <span class="autocomplete-hint"></span>
+                    </div>
+                    <input type="number" class="score-input" placeholder="점수">
+                </div>
+                <div class="score-entry" data-wind="西">
+                    <span class="wind-label">西</span>
+                    <div class="player-input-wrap score-player-wrap">
+                        <input type="text" class="score-player-name" placeholder="참가자 이름" autocomplete="off">
+                        <span class="autocomplete-hint"></span>
+                    </div>
+                    <input type="number" class="score-input" placeholder="점수">
+                </div>
+                <div class="score-entry" data-wind="北">
+                    <span class="wind-label">北</span>
+                    <div class="player-input-wrap score-player-wrap">
+                        <input type="text" class="score-player-name" placeholder="참가자 이름" autocomplete="off">
+                        <span class="autocomplete-hint"></span>
+                    </div>
+                    <input type="number" class="score-input" placeholder="점수">
+                </div>
+                <div class="score-sum-row">
+                    <span>합계 - 100,000 =</span>
+                    <span id="score-sum-display" class="sum-zero">0</span>
+                </div>
+                <button id="submit-score" class="btn-primary">제출</button>
+                <p id="score-status" class="status-msg"></p>
+            </div>
+        </section>
+
+        <!-- 순위 확인 탭 -->
+        <section id="rankings" class="tab-content">
+            <h2>순위 확인</h2>
+            <div class="ranking-section">
+                <h3>팀 순위</h3>
+                <div class="table-wrap">
+                    <table id="team-ranking-table">
+                        <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>팀</th>
+                                <th>승점</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>MVP</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="ranking-section">
+                <h3>개인 순위</h3>
+                <div class="table-wrap">
+                    <table id="player-ranking-table">
+                        <thead>
+                            <tr>
+                                <th>순위</th>
+                                <th>이름</th>
+                                <th>승점</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>승률</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 대전 기록 탭 -->
+        <section id="matches" class="tab-content">
+            <h2>대전 기록</h2>
+            <div id="match-history"></div>
+        </section>
+    </main>
+
+    <!-- 결격 사유 모달 -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div class="modal">
+            <p id="modal-message"></p>
+            <button id="modal-close" class="btn-primary">확인</button>
+        </div>
+    </div>
+
+    <!-- 초기화 확인 모달 -->
+    <div id="reset-modal-overlay" class="modal-overlay hidden">
+        <div class="modal">
+            <p>모든 기록을 초기화하시겠습니까?</p>
+            <div class="modal-btn-row">
+                <button id="reset-confirm" class="btn-danger-lg">예</button>
+                <button id="reset-cancel" class="btn-primary">아니오</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/teams.js"></script>
+    <script src="js/scores.js"></script>
+    <script src="js/matches.js"></script>
+    <script src="js/rankings.js"></script>
+    <script>
+        // 탭 네비게이션
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+
+                if (btn.dataset.tab === 'scores') {
+                    loadScoreUI();
+                } else if (btn.dataset.tab === 'rankings') {
+                    loadRankings();
+                } else if (btn.dataset.tab === 'matches') {
+                    loadMatchHistory();
+                }
+            });
+        });
+
+        // 모달
+        document.getElementById('modal-close').addEventListener('click', () => {
+            document.getElementById('modal-overlay').classList.add('hidden');
+        });
+        document.getElementById('modal-overlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                e.currentTarget.classList.add('hidden');
+            }
+        });
+
+        function showModal(msg) {
+            document.getElementById('modal-message').textContent = msg;
+            document.getElementById('modal-overlay').classList.remove('hidden');
+        }
+
+        // 초기화
+        document.getElementById('reset-all').addEventListener('click', () => {
+            document.getElementById('reset-modal-overlay').classList.remove('hidden');
+        });
+
+        document.getElementById('reset-cancel').addEventListener('click', () => {
+            document.getElementById('reset-modal-overlay').classList.add('hidden');
+        });
+
+        document.getElementById('reset-modal-overlay').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                e.currentTarget.classList.add('hidden');
+            }
+        });
+
+        document.getElementById('reset-confirm').addEventListener('click', async () => {
+            try {
+                await dbReady;
+                await db.ref('tournament').set(null);
+
+                // 팀 등록 폼 초기화
+                document.querySelectorAll('.team-name').forEach(input => input.value = '');
+                document.querySelectorAll('.player-name').forEach(input => input.value = '');
+                document.querySelectorAll('.bonus-points').forEach(input => input.value = '0');
+
+                // 점수 등록 폼 초기화
+                document.querySelectorAll('.score-player-name').forEach(input => input.value = '');
+                document.querySelectorAll('.score-input').forEach(input => input.value = '');
+                document.querySelectorAll('.autocomplete-hint').forEach(hint => hint.textContent = '');
+                if (typeof updateScoreSum === 'function') updateScoreSum();
+
+                document.getElementById('reset-modal-overlay').classList.add('hidden');
+
+                const statusEl = document.getElementById('teams-status');
+                statusEl.textContent = '모든 기록이 초기화되었습니다.';
+                statusEl.style.color = '#ef5350';
+            } catch (e) {
+                document.getElementById('reset-modal-overlay').classList.add('hidden');
+                showModal('초기화 실패: ' + e.message);
+            }
+        });
+    </script>
+</body>
+</html>
